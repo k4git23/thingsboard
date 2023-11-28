@@ -1,0 +1,503 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "fe44ef80-2005-11ee-8463-a7dc93702bf2"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "fe420950-2005-11ee-8463-a7dc93702bf2"
+    },
+    "name" : "Alarm for silo website dashboard",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 2,
+      "toIndex" : 0,
+      "type" : "False"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 3,
+      "type" : "True"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 4,
+      "type" : "True"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 5,
+      "type" : "False"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 8,
+      "type" : "True"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 9,
+      "type" : "False"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 2,
+      "type" : "route-3"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 6,
+      "type" : "route-2"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 7,
+      "type" : "route-1"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 11,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 12,
+      "type" : "route-2"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 13,
+      "type" : "route-3"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 17,
+      "type" : "False"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 18,
+      "type" : "True"
+    }, {
+      "fromIndex" : 12,
+      "toIndex" : 15,
+      "type" : "False"
+    }, {
+      "fromIndex" : 12,
+      "toIndex" : 16,
+      "type" : "True"
+    }, {
+      "fromIndex" : 13,
+      "toIndex" : 1,
+      "type" : "False"
+    }, {
+      "fromIndex" : 13,
+      "toIndex" : 14,
+      "type" : "True"
+    } ],
+    "firstNodeIndex" : 10,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 596,
+        "layoutY" : 522
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "alarmType" : "Silo humidity is high!"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe43b700-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Boiler-Water-Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbClearAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 596,
+        "layoutY" : 428
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "alarmType" : "Silo humidity is low!"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe440520-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Boiler-Water-Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbClearAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 288,
+        "layoutY" : 480
+      },
+      "configuration" : {
+        "jsScript" : "return msg.Weight_C >=53 && msg.Weight_C <=57;"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe442c30-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Silo C",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 593,
+        "layoutY" : 476
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {\n    \tWeight_C: msg.Weight_C\n};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "useMessageAlarmData" : false,
+        "alarmType" : "Silo humidity is high!",
+        "severity" : "CRITICAL",
+        "propagate" : false,
+        "relationTypes" : [ ]
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe442c31-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Weight_Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 808,
+        "layoutY" : 299
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {\n    \tWeight_B: msg.Weight_B\n};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "useMessageAlarmData" : false,
+        "alarmType" : "Silo temperature is low!",
+        "severity" : "WARNING",
+        "propagate" : false,
+        "relationTypes" : [ ]
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe445340-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Weight-Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 806,
+        "layoutY" : 348
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "alarmType" : "Silo temperature is low!"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe447a50-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Boiler-Water-Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbClearAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 537,
+        "layoutY" : 293
+      },
+      "configuration" : {
+        "jsScript" : "return msg.Weight_B >=54 && msg.Weight_B <=56;"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe447a51-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Silo B",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 339,
+        "layoutY" : 136
+      },
+      "configuration" : {
+        "jsScript" : "return msg.Weight_A >=55 && msg.Weight_A <=60;"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe44a160-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Silo A",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 581,
+        "layoutY" : 106
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {\n    \tWeight_A: msg.Weight_A\n};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "useMessageAlarmData" : false,
+        "alarmType" : "Silo humidity is high!",
+        "severity" : "WARNING",
+        "propagate" : false,
+        "relationTypes" : [ ]
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe44c870-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Weight-Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 583,
+        "layoutY" : 155
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "alarmType" : "Silo humidity is high!"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe44c871-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Weight-Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbClearAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 48,
+        "layoutY" : 274
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "function nextRelation(metadata, msg){\n        \tif (metadata.dataType === 'temperature'){\n        \t\treturn ['route-1'];\n        \t}else if (metadata.dataType === 'Weight_2'){\n        \t\treturn ['route-2'];\n        \t}else if (metadata.dataType === 'Weight_3'){\n        \t    return ['route-3'];\n        \t}else return('False)');\n        }\n        \n        return nextRelation(metadata, msg);\n        \n        \n    ",
+        "tbelScript" : null
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe44ef80-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "by type",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsSwitchNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 340,
+        "layoutY" : 73
+      },
+      "configuration" : {
+        "jsScript" : "return msg.Weight_A >=50 && msg.Weight_A <=54;"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe451690-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Silo A",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 539,
+        "layoutY" : 244
+      },
+      "configuration" : {
+        "jsScript" : "return msg.Weight_B >=50 && msg.Weight_B <=53;"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe451691-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Silo B",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 287,
+        "layoutY" : 415
+      },
+      "configuration" : {
+        "jsScript" : "return msg.Weight_C >=50 && msg.Weight_C <=52;"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe453da0-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Silo C",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 593,
+        "layoutY" : 381
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {\n    \tWeight_C: msg.Weight_C\n};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "useMessageAlarmData" : false,
+        "alarmType" : "Silo humidity is low!",
+        "severity" : "WARNING",
+        "propagate" : false,
+        "relationTypes" : [ ]
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe453da1-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Weight_Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 805,
+        "layoutY" : 249
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "alarmType" : "Silo temperature is high!"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe4564b0-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Boiler-Water-Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbClearAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 805,
+        "layoutY" : 202
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {\n    \tWeight_B: msg.Weight_B\n};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "useMessageAlarmData" : false,
+        "alarmType" : "Silo temperature is high!",
+        "severity" : "CRITICAL",
+        "propagate" : false,
+        "relationTypes" : [ ]
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe4564b1-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Weight-Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 583,
+        "layoutY" : 58
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "alarmType" : "Silo Temperature is normal!"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe458bc0-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Weight-Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbClearAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 585,
+        "layoutY" : 9
+      },
+      "configuration" : {
+        "alarmDetailsBuildJs" : "var details = {\n    \tWeight_A: msg.Weight_A\n};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n}\nreturn details;",
+        "useMessageAlarmData" : false,
+        "alarmType" : "Silo Temperature is normal!",
+        "severity" : "INDETERMINATE",
+        "propagate" : false,
+        "relationTypes" : [ ]
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "fe458bc1-2005-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "Weight-Alarm",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

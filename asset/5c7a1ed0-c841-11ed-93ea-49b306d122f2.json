@@ -1,0 +1,108 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "3499d680-c841-11ed-93ea-49b306d122f2"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "c665e170-00aa-11ee-8161-2f268b289b4d"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "5c7a1ed0-c841-11ed-93ea-49b306d122f2"
+    },
+    "label" : null,
+    "name" : "Farm",
+    "type" : "greenhouse"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "DEVICE",
+      "id" : "d16877c0-c88a-11ed-93ea-49b306d122f2"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "5c7a1ed0-c841-11ed-93ea-49b306d122f2"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "5c7a1ed0-c841-11ed-93ea-49b306d122f2"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "392132f0-c8bb-11ed-a99c-bbaa164360b6"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "5c7a1ed0-c841-11ed-93ea-49b306d122f2"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "41b7af70-c8bb-11ed-a99c-bbaa164360b6"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "5c7a1ed0-c841-11ed-93ea-49b306d122f2"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "5e9b65d0-c8bd-11ed-a99c-bbaa164360b6"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "address",
+      "lastUpdateTs" : 1679490613349,
+      "longValue" : null,
+      "strValue" : "Farm One"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 52.20839584729276,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1679442039025,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -1.60325658769,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1679442123111,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "unites",
+      "lastUpdateTs" : 1679442638421,
+      "longValue" : null,
+      "strValue" : "metric"
+    } ]
+  }
+}

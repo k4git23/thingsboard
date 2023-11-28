@@ -1,0 +1,328 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : true,
+    "externalId" : null,
+    "firstRuleNodeId" : null,
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "50fbc410-1fb6-11ee-8463-a7dc93702bf2"
+    },
+    "name" : "Temp_alarm",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 2,
+      "toIndex" : 3,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 4,
+      "toIndex" : 5,
+      "type" : "True"
+    }, {
+      "fromIndex" : 5,
+      "toIndex" : 1,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 5,
+      "toIndex" : 9,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 7,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 9,
+      "toIndex" : 6,
+      "type" : "Updated"
+    } ],
+    "firstNodeIndex" : null,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 965,
+        "layoutY" : 38
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "alarmDetailsBuildTbel" : "",
+        "useMessageAlarmData" : false,
+        "overwriteAlarmDetails" : false,
+        "alarmType" : "Critical Temerature",
+        "severity" : "CRITICAL",
+        "propagate" : true,
+        "relationTypes" : [ ],
+        "propagateToOwner" : true,
+        "propagateToTenant" : true,
+        "dynamicSeverity" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "1c117ab0-1fc5-11ee-8463-a7dc93702bf2"
+      },
+      "name" : "alarm1",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "ll",
+        "layoutX" : 629,
+        "layoutY" : 772
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "alarmDetailsBuildTbel" : "",
+        "alarmType" : "Critical Alarm"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "8b0f6a20-222d-11ee-bbbc-37ec1029797b"
+      },
+      "name" : "clear",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbClearAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 547,
+        "layoutY" : 279
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "\n  var newMsg = {\n   // \"Unripe_Green\":msg.Ripness.Unripe_Green,\n    \"Ripe_count\": msg.Ripness.Ripe,\n   // \"Unripe_Red\": msg.Ripness.Unripe_Red,\n  //  \"X_Coord\": msg.Ripness.X_Coord,\n  //  \"Y_Coord\": msg.Ripness.Y_Coord,\n    \n    \n};\n\n\n\nreturn {msg:newMsg,metadata:metadata,msgType:msgType};\n\n"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "247dc200-227a-11ee-bbbc-37ec1029797b"
+      },
+      "name" : "fetchdata",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1056,
+        "layoutY" : 336
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "skipLatestPersistence" : false,
+        "useServerTs" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "247de910-227a-11ee-bbbc-37ec1029797b"
+      },
+      "name" : "ripe_count",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 185,
+        "layoutY" : 426
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return ( msg.outside_Temp  >= 17  || msg.outside_Temp  <= 15);",
+        "tbelScript" : "\n//return ( msg.outside_Temp  >= 15  || msg.outside_Temp  <= 8);\nreturn ( msg. temperatureX >= 40  || msg.temperatureX <= 15);\n"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ea6fabe0-2310-11ee-bbbc-37ec1029797b"
+      },
+      "name" : "in thermpdevice",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 358,
+        "layoutY" : 706
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "metadata.temperatureX = msg.temperatureX;\nreturn {msg: msg, metadata: metadata, msgType: msgType};\n"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ea6ffa00-2310-11ee-bbbc-37ec1029797b"
+      },
+      "name" : "Add temp to meta",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 861,
+        "layoutY" : 611
+      },
+      "configuration" : {
+        "fromTemplate" : "conbotwarning@gmail.com",
+        "toTemplate" : "hazem.nureldin@warwick.ac.uk",
+        "ccTemplate" : null,
+        "bccTemplate" : null,
+        "subjectTemplate" : "Emilie, the Device ${deviceType} temperature high",
+        "mailBodyType" : "false",
+        "isHtmlTemplate" : null,
+        "bodyTemplate" : "Move you as and fix, the Device ${deviceName} has high temperature ${temperatureX} $[temperatureX]"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ea702110-2310-11ee-bbbc-37ec1029797b"
+      },
+      "name" : "Tmep to email",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.mail.TbMsgToEmailNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1092,
+        "layoutY" : 709
+      },
+      "configuration" : {
+        "useSystemSmtpSettings" : false,
+        "smtpProtocol" : "smtp",
+        "smtpHost" : "smtp.gmail.com",
+        "smtpPort" : 465,
+        "timeout" : 10000,
+        "enableTls" : true,
+        "tlsVersion" : "TLSv1.2",
+        "enableProxy" : false,
+        "proxyHost" : null,
+        "proxyPort" : null,
+        "proxyUser" : null,
+        "proxyPassword" : null,
+        "username" : "crombotwarning@gmail.com",
+        "password" : "ycrhmvswuhoyvbqa"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ea704820-2310-11ee-bbbc-37ec1029797b"
+      },
+      "name" : "Send email",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.mail.TbSendEmailNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 565,
+        "layoutY" : 474
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    //delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "alarmDetailsBuildTbel" : "var details = {};\nif (metadata.prevAlarmDetails != null) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    //metadata.remove('prevAlarmDetails');\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "useMessageAlarmData" : false,
+        "overwriteAlarmDetails" : true,
+        "alarmType" : "General Alarm",
+        "severity" : "CRITICAL",
+        "propagate" : false,
+        "relationTypes" : [ ],
+        "propagateToOwner" : true,
+        "propagateToTenant" : true,
+        "dynamicSeverity" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ea706f30-2310-11ee-bbbc-37ec1029797b"
+      },
+      "name" : "alarm_ON",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 573,
+        "layoutY" : 364
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "alarmDetailsBuildTbel" : "var details = {};\nif (metadata.prevAlarmDetails != null) {\n    details = JSON.parse(msg.temperatureX, metadata.prevAlarmDetails);\n    details.count=1000;\n    //remove prevAlarmDetails from metadata\n    //metadata.remove('prevAlarmDetails');\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "useMessageAlarmData" : false,
+        "overwriteAlarmDetails" : false,
+        "alarmType" : "General Alarm",
+        "severity" : "CRITICAL",
+        "propagate" : false,
+        "relationTypes" : [ ],
+        "propagateToOwner" : true,
+        "propagateToTenant" : true,
+        "dynamicSeverity" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "de2ce7e0-231e-11ee-bbbc-37ec1029797b"
+      },
+      "name" : "trueValue",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 283,
+        "layoutY" : 295
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "metadata.temperatureX = msg.temperatureX;\nreturn {msg: msg, metadata: metadata, msgType: msgType};\n"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "37ac1a20-2347-11ee-b193-e324df6897af"
+      },
+      "name" : "get temp value",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : true,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "2046a1e0-1a80-11ee-afaa-d380d2f6d9f1"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "a72cbd80-1a7f-11ee-afaa-d380d2f6d9f1"
+    },
+    "name" : "new ripe",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 1,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 0,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 374,
+        "layoutY" : 144
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "\n  var newMsg = {\n   // \"Unripe_Green\":msg.Ripness.Unripe_Green,\n    \"Ripe_count\": msg.Ripness.Ripe,\n   // \"Unripe_Red\": msg.Ripness.Unripe_Red,\n  //  \"X_Coord\": msg.Ripness.X_Coord,\n  //  \"Y_Coord\": msg.Ripness.Y_Coord,\n    \n    \n};\n\n\n\nreturn {msg:newMsg,metadata:metadata,msgType:msgType};\n\n"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2046a1e0-1a80-11ee-afaa-d380d2f6d9f1"
+      },
+      "name" : "fetchdata",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 829,
+        "layoutY" : 147
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "skipLatestPersistence" : false,
+        "useServerTs" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "20498810-1a80-11ee-afaa-d380d2f6d9f1"
+      },
+      "name" : "ripe_count",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 572,
+        "layoutY" : 260
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "return {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "aec26e00-1a8e-11ee-afaa-d380d2f6d9f1"
+      },
+      "name" : "Calculate",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

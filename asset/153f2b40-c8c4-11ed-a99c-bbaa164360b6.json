@@ -1,0 +1,64 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "f4d5a860-c7e3-11ed-9fbc-57266ad20771"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "c665e170-00aa-11ee-8161-2f268b289b4d"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "153f2b40-c8c4-11ed-a99c-bbaa164360b6"
+    },
+    "label" : null,
+    "name" : "GreenH2",
+    "type" : "HCS"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "eebaf080-c8c3-11ed-a99c-bbaa164360b6"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "153f2b40-c8c4-11ed-a99c-bbaa164360b6"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "address",
+      "lastUpdateTs" : 1679498218208,
+      "longValue" : null,
+      "strValue" : "GreenHouse2"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 52.20825376477793,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1679498286692,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -1.6029235846792034,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1679498270692,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  }
+}

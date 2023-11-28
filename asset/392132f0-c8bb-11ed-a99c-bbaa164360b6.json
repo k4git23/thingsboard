@@ -1,0 +1,64 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "3499d680-c841-11ed-93ea-49b306d122f2"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "c665e170-00aa-11ee-8161-2f268b289b4d"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "392132f0-c8bb-11ed-a99c-bbaa164360b6"
+    },
+    "label" : null,
+    "name" : "Green1",
+    "type" : "greenhouse"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "5c7a1ed0-c841-11ed-93ea-49b306d122f2"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "392132f0-c8bb-11ed-a99c-bbaa164360b6"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "address",
+      "lastUpdateTs" : 1679497301622,
+      "longValue" : null,
+      "strValue" : "GreenHouse1"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : 52.20829485574567,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1679494467399,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -1.6039213664430825,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1679494486791,
+      "longValue" : null,
+      "strValue" : null
+    } ]
+  }
+}

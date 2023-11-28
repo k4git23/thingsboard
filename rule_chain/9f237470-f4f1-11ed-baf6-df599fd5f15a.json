@@ -1,0 +1,78 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "14958680-f4f2-11ed-baf6-df599fd5f15a"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "9f237470-f4f1-11ed-baf6-df599fd5f15a"
+    },
+    "name" : "ripe",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 1,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 0,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 447,
+        "layoutY" : 148
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "\n  var newMsg = {\n    \"Unripe_Green\":msg.Ripness.Unripe_Green,\n    \"Ripe\": msg.Ripness.Ripe,\n    \"Unripe_Red\": msg.Ripness.Unripe_Red,\n    \"X_Coord\": msg.Ripness.X_Coord,\n    \"Y_Coord\": msg.Ripness.Y_Coord,\n    \n    \n};\n\n\n\nreturn {msg:newMsg,metadata:metadata,msgType:msgType};\n\n"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "14958680-f4f2-11ed-baf6-df599fd5f15a"
+      },
+      "name" : "fetchdata",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 812,
+        "layoutY" : 147
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "skipLatestPersistence" : false,
+        "useServerTs" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "29cf7c40-f4f2-11ed-baf6-df599fd5f15a"
+      },
+      "name" : "ripe",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

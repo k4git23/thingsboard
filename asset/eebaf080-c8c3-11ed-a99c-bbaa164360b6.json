@@ -1,0 +1,88 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "assetProfileId" : {
+      "entityType" : "ASSET_PROFILE",
+      "id" : "f4d5a860-c7e3-11ed-9fbc-57266ad20771"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "c665e170-00aa-11ee-8161-2f268b289b4d"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "eebaf080-c8c3-11ed-a99c-bbaa164360b6"
+    },
+    "label" : null,
+    "name" : "Ripe House",
+    "type" : "HCS"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "eebaf080-c8c3-11ed-a99c-bbaa164360b6"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "0f0626c0-c8c4-11ed-a99c-bbaa164360b6"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "eebaf080-c8c3-11ed-a99c-bbaa164360b6"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "153f2b40-c8c4-11ed-a99c-bbaa164360b6"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "eebaf080-c8c3-11ed-a99c-bbaa164360b6"
+    },
+    "to" : {
+      "entityType" : "ASSET",
+      "id" : "1c35b360-c8c4-11ed-a99c-bbaa164360b6"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : 52.20829485574567,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1679505455076,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : -1.6039213664430825,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1679505463907,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "rect",
+      "lastUpdateTs" : 1680003931013,
+      "longValue" : null,
+      "strValue" : "[[2801733],[ -1.6036263445898113] ,[ 52.20815052306889, -1.6036294434875231],[ 52.208153371550594, -1.6041856956267362]]"
+    } ]
+  }
+}

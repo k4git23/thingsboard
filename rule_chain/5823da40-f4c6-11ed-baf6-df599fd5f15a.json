@@ -1,0 +1,185 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : true,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "05b72550-f4da-11ed-baf6-df599fd5f15a"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "5823da40-f4c6-11ed-baf6-df599fd5f15a"
+    },
+    "name" : "EnvirnSplit",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 1,
+      "toIndex" : 3,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 4,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 1,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 308,
+        "layoutY" : 24
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "84838170-f4cc-11ed-baf6-df599fd5f15a"
+      },
+      "name" : "envir",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbSplitArrayMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 446,
+        "layoutY" : 153
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "\n\n\n  var newMsg = {\n    \"Env Temp\":msg.Envir.temperature,\n    \"Env humudity\": msg.Envir.humudity,\n    \"Env CO2\": msg.Envir.CO2,\n    \"Env red_intensity\": msg.Envir.red_intensity,\n    \n    \n};\n\n\n\nreturn {msg:newMsg,metadata:metadata,msgType:msgType};\n\n"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "05b72550-f4da-11ed-baf6-df599fd5f15a"
+      },
+      "name" : "fetchdata",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 460,
+        "layoutY" : 252
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "\nvar newMsg = {\n    \"XRipe\":msg.Ripe.X_Coord,\n    \"YRipe\": msg.Ripe.Y_Coord\n\n};\n\n\n\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "5f358220-f4df-11ed-baf6-df599fd5f15a"
+      },
+      "name" : "ripe",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 964,
+        "layoutY" : 124
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "skipLatestPersistence" : false,
+        "useServerTs" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "c8e7cec0-f4e0-11ed-baf6-df599fd5f15a"
+      },
+      "name" : "env",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1005,
+        "layoutY" : 235
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "skipLatestPersistence" : false,
+        "useServerTs" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "c8e7f5d0-f4e0-11ed-baf6-df599fd5f15a"
+      },
+      "name" : "ripe",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 523,
+        "layoutY" : 811
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "\n\n  var newMsg = {\n    \"Ripe_Red\": msg.Ripness.Ripe_Red\n\n    \n};\n\n\n\nreturn {msg:newMsg,metadata:metadata,msgType:msgType};\n"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "e67967d0-03c9-11ee-a3ad-75156999701f"
+      },
+      "name" : "fetchdata",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 231,
+        "layoutY" : 733
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "\nif (msg === \"Ripe\") {\n\n  var newMsg = {\n    \"Env Temp\":msg.Envir.temperature,\n    \"Env humudity\": msg.Envir.humudity,\n    \"Env CO2\": msg.Envir.CO2,\n    \"Env red_intensity\": msg.Envir.red_intensity,\n    \n    \n};\n\n\n\nreturn {msg:newMsg,metadata:metadata,msgType:msgType};\n\n}"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "e67d5f70-03c9-11ee-a3ad-75156999701f"
+      },
+      "name" : "fetchdata",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
