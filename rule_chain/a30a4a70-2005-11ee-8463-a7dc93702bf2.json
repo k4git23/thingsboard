@@ -1,7 +1,9 @@
 {
   "entityType" : "RULE_CHAIN",
   "entity" : {
-    "additionalInfo" : null,
+    "additionalInfo" : {
+      "description" : ""
+    },
     "configuration" : null,
     "debugMode" : false,
     "externalId" : null,
@@ -13,7 +15,7 @@
       "entityType" : "RULE_CHAIN",
       "id" : "a30a4a70-2005-11ee-8463-a7dc93702bf2"
     },
-    "name" : "Root Rule Chain",
+    "name" : "Root Rule Chain1",
     "root" : false,
     "type" : "CORE"
   },
